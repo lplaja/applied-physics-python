@@ -74,3 +74,25 @@ def fresnel_reflectance(n1, n2, theta_i_deg):
     r_s = (n1 * cos_i - n2 * cos_t) / (n1 * cos_i + n2 * cos_t)
     r_p = (n2 * cos_i - n1 * cos_t) / (n2 * cos_i + n1 * cos_t)
     return r_s**2, r_p**2
+
+def peak_irradiance(E_J, tau_s, w0_m):
+    """
+    Peak irradiance at the beam waist of a Gaussian pulse.
+
+    I_peak = 2 * E / (pi * w0^2 * tau)
+
+    Parameters
+    ----------
+    E_J   : float  Pulse energy [J]
+    tau_s : float  Pulse duration FWHM [s]
+    w0_m  : float  Beam waist radius [m]
+
+    Returns
+    -------
+    float
+        Peak irradiance [W/m²]
+    """
+    import math
+    # BUG: can you spot it before running the debugger?
+    I_peak = 2 * E_J / (math.pi * w0_m**2 * tau_s)
+    return I_peak

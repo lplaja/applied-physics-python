@@ -1,0 +1,10 @@
+# Python for Applied Physics — course dependencies
+# Install with: pip install -r requirements.txt
+
+numpy>=1.24
+scipy>=1.10
+matplotlib>=3.7
+pandas>=2.0
+h5py>=3.8
+jupyter>=1.0
+ipykernel>=6.0

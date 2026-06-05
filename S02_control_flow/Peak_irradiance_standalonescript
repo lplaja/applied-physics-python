@@ -1,0 +1,28 @@
+def peak_irradiance(E_J, tau_s, w0_m):
+    """
+    Peak irradiance at the beam waist of a Gaussian pulse.
+
+    I_peak = 2 * E / (pi * w0^2 * tau)
+
+    Parameters
+    ----------
+    E_J   : float  Pulse energy [J]
+    tau_s : float  Pulse duration FWHM [s]
+    w0_m  : float  Beam waist radius [m]
+
+    Returns
+    -------
+    float
+        Peak irradiance [W/m²]
+    """
+    import math
+    # BUG: can you spot it before running the debugger?
+    I_peak = 2 * E_J / (math.pi * w0_m * tau_s)
+    return I_peak
+
+
+# Test: 1 µJ pulse, 300 fs, 50 µm waist
+# Expected ~  2 * 1e-6 / (pi * (50e-6)^2 * 300e-15)  ≈  8.5e11 W/m²
+I = peak_irradiance(1e-6, 300e-15, 50e-6)
+print(f"I_peak = {I:.3e} W/m²")
+print(f"I_peak = {I/1e4:.3e} W/cm²")

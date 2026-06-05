@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python Physics — Symbol & Shortcut Reference Card</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap');
+
+  :root {
+    --bg: #fafaf8;
+    --card-bg: #ffffff;
+    --text: #1a1a1a;
+    --muted: #6b7280;
+    --border: #e2e2de;
+    --accent: #2563eb;
+    --accent-light: #eff4ff;
+    --code-bg: #f4f4f0;
+    --section-bg: #f8f8f5;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --purple: #7c3aed;
+    --purple-light: #f5f3ff;
+    --orange: #d97706;
+    --orange-light: #fffbeb;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Source Serif 4', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.55;
+    padding: 2rem 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  h1 {
+    font-size: 1.7rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+  }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--accent);
+    letter-spacing: -0.01em;
+  }
+
+  h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .section {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1.25rem;
+  }
+
+  .section.full { grid-column: 1 / -1; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+
+  th {
+    text-align: left;
+    font-weight: 600;
+    padding: 0.4rem 0.5rem;
+    border-bottom: 2px solid var(--border);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+  }
+
+  td {
+    padding: 0.35rem 0.5rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .sym {
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-align: center;
+    width: 2.5rem;
+    color: var(--accent);
+  }
+
+  code, .mono {
+    font-family: 'JetBrains Mono', 'Fira Code', monospace;
+    font-size: 0.82rem;
+    background: var(--code-bg);
+    padding: 0.15rem 0.35rem;
+    border-radius: 3px;
+  }
+
+  .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.78rem;
+    background: #f0f0ec;
+    border: 1px solid #d4d4ce;
+    border-bottom-width: 2px;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    white-space: nowrap;
+    color: #333;
+  }
+
+  .mac-key {
+    background: var(--accent-light);
+    border-color: #bdd0f7;
+  }
+
+  .tip {
+    background: var(--green-light);
+    border-left: 3px solid var(--green);
+    padding: 0.6rem 0.8rem;
+    margin-top: 0.75rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.85rem;
+    color: #065f46;
+  }
+
+  .note {
+    background: var(--orange-light);
+    border-left: 3px solid var(--orange);
+    padding: 0.6rem 0.8rem;
+    margin-top: 0.75rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 0.85rem;
+    color: #92400e;
+  }
+
+  .copy-hint {
+    font-size: 0.78rem;
+    color: var(--muted);
+    margin-top: 0.5rem;
+  }
+
+  .category-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 0.15rem 0.5rem;
+    border-radius: 3px;
+    display: inline-block;
+    margin-bottom: 0.3rem;
+  }
+  .cat-optics   { background: var(--accent-light); color: var(--accent); }
+  .cat-math     { background: var(--purple-light); color: var(--purple); }
+  .cat-general  { background: var(--green-light);  color: var(--green); }
+  .cat-subscript{ background: var(--orange-light); color: var(--orange); }
+
+  @media (max-width: 700px) {
+    .grid { grid-template-columns: 1fr; }
+    body { padding: 1rem; }
+  }
+
+  @media print {
+    body { padding: 0.5cm; font-size: 9pt; max-width: 100%; }
+    .section { break-inside: avoid; border: 1px solid #ccc; }
+    .grid { gap: 0.8rem; }
+    h1 { font-size: 14pt; }
+    h2 { font-size: 11pt; }
+    table { font-size: 8pt; }
+    .sym { font-size: 12pt; }
+    code, .mono { font-size: 7.5pt; }
+    .key { font-size: 7pt; }
+  }
+</style>
+</head>
+<body>
+
+<h1>Python Physics — Symbol &amp; Shortcut Reference Card</h1>
+<p class="subtitle">Course: Python for Applied Physics &nbsp;·&nbsp; Keep this open or print it — you'll use it daily.</p>
+
+<!-- ==================== GREEK LETTERS ==================== -->
+<div class="grid">
+
+<div class="section">
+  <h2>Greek Letters for Physics Code</h2>
+  <p class="category-label cat-optics">Optics &amp; Electromagnetism</p>
+  <table>
+    <tr><th>Symbol</th><th>Name</th><th>Python identifier</th><th>Common use</th></tr>
+    <tr><td class="sym">λ</td><td>lambda</td><td><code>λ</code></td><td>wavelength</td></tr>
+    <tr><td class="sym">ν</td><td>nu</td><td><code>ν</code></td><td>frequency</td></tr>
+    <tr><td class="sym">ω</td><td>omega</td><td><code>ω</code></td><td>angular frequency</td></tr>
+    <tr><td class="sym">θ</td><td>theta</td><td><code>θ</code></td><td>angle, divergence</td></tr>
+    <tr><td class="sym">φ</td><td>phi</td><td><code>φ</code></td><td>phase, azimuthal angle</td></tr>
+    <tr><td class="sym">ψ</td><td>psi</td><td><code>ψ</code></td><td>wavefunction, field</td></tr>
+    <tr><td class="sym">ε</td><td>epsilon</td><td><code>ε</code></td><td>permittivity, small quantity</td></tr>
+    <tr><td class="sym">μ</td><td>mu</td><td><code>μ</code></td><td>permeability, micro-</td></tr>
+    <tr><td class="sym">χ</td><td>chi</td><td><code>χ</code></td><td>susceptibility</td></tr>
+    <tr><td class="sym">η</td><td>eta</td><td><code>η</code></td><td>efficiency, impedance</td></tr>
+  </table>
+
+  <p class="category-label cat-math" style="margin-top: 0.8rem;">Math &amp; General Physics</p>
+  <table>
+    <tr><th>Symbol</th><th>Name</th><th>Python identifier</th><th>Common use</th></tr>
+    <tr><td class="sym">α</td><td>alpha</td><td><code>α</code></td><td>absorption, angle</td></tr>
+    <tr><td class="sym">β</td><td>beta</td><td><code>β</code></td><td>propagation constant</td></tr>
+    <tr><td class="sym">γ</td><td>gamma</td><td><code>γ</code></td><td>nonlinear coefficient</td></tr>
+    <tr><td class="sym">δ</td><td>delta</td><td><code>δ</code></td><td>small difference</td></tr>
+    <tr><td class="sym">Δ</td><td>Delta</td><td><code>Δ</code></td><td>difference, change</td></tr>
+    <tr><td class="sym">σ</td><td>sigma</td><td><code>σ</code></td><td>std deviation, cross-section</td></tr>
+    <tr><td class="sym">τ</td><td>tau</td><td><code>τ</code></td><td>pulse duration, delay</td></tr>
+    <tr><td class="sym">π</td><td>pi</td><td><code>π</code> or <code>math.pi</code></td><td>3.14159…</td></tr>
+    <tr><td class="sym">ρ</td><td>rho</td><td><code>ρ</code></td><td>density, radial coordinate</td></tr>
+    <tr><td class="sym">κ</td><td>kappa</td><td><code>κ</code></td><td>coupling coefficient</td></tr>
+    <tr><td class="sym">Σ</td><td>Sigma</td><td><code>Σ</code></td><td>summation</td></tr>
+    <tr><td class="sym">Ω</td><td>Omega</td><td><code>Ω</code></td><td>solid angle</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Math &amp; Special Symbols</h2>
+  <p class="category-label cat-subscript">Subscripts &amp; Superscripts</p>
+  <table>
+    <tr><th>Symbol</th><th>Python use</th><th>Example</th></tr>
+    <tr><td class="sym">₀</td><td><code>w₀</code></td><td>beam waist</td></tr>
+    <tr><td class="sym">₁ ₂ ₃</td><td><code>n₁</code>, <code>n₂</code></td><td>refractive indices</td></tr>
+    <tr><td class="sym">ₓ ᵧ</td><td><code>Eₓ</code>, <code>Eᵧ</code></td><td>field components</td></tr>
+    <tr><td class="sym">²</td><td><code>M²</code></td><td>beam quality factor</td></tr>
+    <tr><td class="sym">⁻¹</td><td><code>cm⁻¹</code> (in strings)</td><td>wavenumber unit</td></tr>
+  </table>
+
+  <p class="category-label cat-general" style="margin-top: 0.8rem;">Operators &amp; Arrows</p>
+  <table>
+    <tr><th>Symbol</th><th>Meaning</th><th>Copy</th></tr>
+    <tr><td class="sym">±</td><td>plus-minus</td><td><code>±</code></td></tr>
+    <tr><td class="sym">×</td><td>multiplication (display)</td><td><code>×</code></td></tr>
+    <tr><td class="sym">·</td><td>dot product (display)</td><td><code>·</code></td></tr>
+    <tr><td class="sym">≈</td><td>approximately</td><td><code>≈</code></td></tr>
+    <tr><td class="sym">≠</td><td>not equal</td><td><code>≠</code></td></tr>
+    <tr><td class="sym">≤ ≥</td><td>less/greater or equal</td><td><code>≤ ≥</code></td></tr>
+    <tr><td class="sym">→</td><td>maps to, implies</td><td><code>→</code></td></tr>
+    <tr><td class="sym">∞</td><td>infinity</td><td><code>∞</code></td></tr>
+    <tr><td class="sym">∂</td><td>partial derivative</td><td><code>∂</code></td></tr>
+    <tr><td class="sym">∇</td><td>nabla / gradient</td><td><code>∇</code></td></tr>
+    <tr><td class="sym">∫</td><td>integral</td><td><code>∫</code></td></tr>
+    <tr><td class="sym">ℏ</td><td>h-bar</td><td><code>ℏ</code></td></tr>
+  </table>
+
+  <p class="category-label cat-general" style="margin-top: 0.8rem;">Units (for f-strings &amp; labels)</p>
+  <table>
+    <tr><th>Symbol</th><th>Meaning</th><th>Usage in f-string</th></tr>
+    <tr><td class="sym">Å</td><td>angstrom</td><td><code>f"{d:.1f} Å"</code></td></tr>
+    <tr><td class="sym">°</td><td>degree</td><td><code>f"{θ:.1f}°"</code></td></tr>
+    <tr><td class="sym">µ</td><td>micro</td><td><code>f"{w₀:.1f} µm"</code></td></tr>
+  </table>
+
+  <div class="tip">
+    <strong>In Python code</strong> — use Greek letters as variable names:<br>
+    <code>λ = 800e-9</code> &nbsp; <code>θ = λ / (π * w₀)</code><br><br>
+    <strong>In f-strings &amp; comments</strong> — use all symbols freely:<br>
+    <code>print(f"Δν = {dnu:.2e} Hz")</code>
+  </div>
+</div>
+
+</div>
+
+<!-- ==================== HOW TO TYPE ==================== -->
+<div class="grid">
+
+<div class="section full">
+  <h2>How to Type These Symbols</h2>
+  <table>
+    <tr>
+      <th>Platform</th>
+      <th>Method</th>
+      <th>Example: typing λ</th>
+    </tr>
+    <tr>
+      <td><strong>macOS</strong></td>
+      <td>Edit → Emoji &amp; Symbols, or <span class="key mac-key">⌃</span> <span class="key mac-key">⌘</span> <span class="key mac-key">Space</span>, search "lambda"</td>
+      <td>Character Viewer → search "lambda" → double-click</td>
+    </tr>
+    <tr>
+      <td><strong>Windows</strong></td>
+      <td><span class="key">Win</span> + <span class="key">.</span> (emoji picker), or Character Map app</td>
+      <td>Emoji picker → click Ω symbol tab → search; or use Character Map</td>
+    </tr>
+    <tr>
+      <td><strong>Linux</strong></td>
+      <td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">U</span>, then Unicode hex, then <span class="key">Enter</span></td>
+      <td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">U</span> <code>03BB</code> <span class="key">Enter</span></td>
+    </tr>
+    <tr>
+      <td><strong>VS Code</strong></td>
+      <td>Extension: <em>Insert Unicode</em> — search by name</td>
+      <td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">P</span> → "Insert Unicode" → "lambda"</td>
+    </tr>
+    <tr>
+      <td><strong>Any OS</strong></td>
+      <td>Copy from this reference card!</td>
+      <td>Select <code>λ</code> → copy → paste into VS Code</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+
+<!-- ==================== VS CODE SHORTCUTS ==================== -->
+<div class="grid">
+
+<div class="section">
+  <h2>VS Code Shortcuts — Windows / Linux</h2>
+
+  <h3>Essential (Day 1)</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Command Palette</td><td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">P</span></td></tr>
+    <tr><td>Open terminal</td><td><span class="key">Ctrl</span>+<span class="key">`</span></td></tr>
+    <tr><td>Run cell / selection</td><td><span class="key">Shift</span>+<span class="key">Enter</span></td></tr>
+    <tr><td>Quick Open file</td><td><span class="key">Ctrl</span>+<span class="key">P</span></td></tr>
+    <tr><td>Save</td><td><span class="key">Ctrl</span>+<span class="key">S</span></td></tr>
+    <tr><td>Undo / Redo</td><td><span class="key">Ctrl</span>+<span class="key">Z</span> / <span class="key">Ctrl</span>+<span class="key">Y</span></td></tr>
+  </table>
+
+  <h3>Navigation</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Go to Definition</td><td><span class="key">F12</span></td></tr>
+    <tr><td>Peek Definition</td><td><span class="key">Alt</span>+<span class="key">F12</span></td></tr>
+    <tr><td>Go back</td><td><span class="key">Alt</span>+<span class="key">←</span></td></tr>
+    <tr><td>Go to line</td><td><span class="key">Ctrl</span>+<span class="key">G</span></td></tr>
+    <tr><td>Find in file</td><td><span class="key">Ctrl</span>+<span class="key">F</span></td></tr>
+    <tr><td>Find in all files</td><td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">F</span></td></tr>
+    <tr><td>Toggle sidebar</td><td><span class="key">Ctrl</span>+<span class="key">B</span></td></tr>
+  </table>
+
+  <h3>Editing Power Moves</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Multi-cursor</td><td><span class="key">Alt</span>+Click</td></tr>
+    <tr><td>Select word occurrences</td><td><span class="key">Ctrl</span>+<span class="key">D</span> (repeat)</td></tr>
+    <tr><td>Move line up/down</td><td><span class="key">Alt</span>+<span class="key">↑</span>/<span class="key">↓</span></td></tr>
+    <tr><td>Duplicate line</td><td><span class="key">Shift</span>+<span class="key">Alt</span>+<span class="key">↓</span></td></tr>
+    <tr><td>Delete line</td><td><span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">K</span></td></tr>
+    <tr><td>Toggle comment</td><td><span class="key">Ctrl</span>+<span class="key">/</span></td></tr>
+    <tr><td>Quick Fix / suggestion</td><td><span class="key">Ctrl</span>+<span class="key">.</span></td></tr>
+    <tr><td>Format document</td><td><span class="key">Shift</span>+<span class="key">Alt</span>+<span class="key">F</span></td></tr>
+    <tr><td>Rename symbol</td><td><span class="key">F2</span></td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>VS Code Shortcuts — macOS</h2>
+
+  <h3>Essential (Day 1)</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Command Palette</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">⇧</span>+<span class="key mac-key">P</span></td></tr>
+    <tr><td>Open terminal</td><td><span class="key mac-key">⌃</span>+<span class="key mac-key">`</span></td></tr>
+    <tr><td>Run cell / selection</td><td><span class="key mac-key">⇧</span>+<span class="key mac-key">↩</span></td></tr>
+    <tr><td>Quick Open file</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">P</span></td></tr>
+    <tr><td>Save</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">S</span></td></tr>
+    <tr><td>Undo / Redo</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">Z</span> / <span class="key mac-key">⌘</span>+<span class="key mac-key">⇧</span>+<span class="key mac-key">Z</span></td></tr>
+  </table>
+
+  <h3>Navigation</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Go to Definition</td><td><span class="key mac-key">F12</span></td></tr>
+    <tr><td>Peek Definition</td><td><span class="key mac-key">⌥</span>+<span class="key mac-key">F12</span></td></tr>
+    <tr><td>Go back</td><td><span class="key mac-key">⌃</span>+<span class="key mac-key">-</span></td></tr>
+    <tr><td>Go to line</td><td><span class="key mac-key">⌃</span>+<span class="key mac-key">G</span></td></tr>
+    <tr><td>Find in file</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">F</span></td></tr>
+    <tr><td>Find in all files</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">⇧</span>+<span class="key mac-key">F</span></td></tr>
+    <tr><td>Toggle sidebar</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">B</span></td></tr>
+  </table>
+
+  <h3>Editing Power Moves</h3>
+  <table>
+    <tr><th>Action</th><th>Shortcut</th></tr>
+    <tr><td>Multi-cursor</td><td><span class="key mac-key">⌥</span>+Click</td></tr>
+    <tr><td>Select word occurrences</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">D</span> (repeat)</td></tr>
+    <tr><td>Move line up/down</td><td><span class="key mac-key">⌥</span>+<span class="key mac-key">↑</span>/<span class="key mac-key">↓</span></td></tr>
+    <tr><td>Duplicate line</td><td><span class="key mac-key">⇧</span>+<span class="key mac-key">⌥</span>+<span class="key mac-key">↓</span></td></tr>
+    <tr><td>Delete line</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">⇧</span>+<span class="key mac-key">K</span></td></tr>
+    <tr><td>Toggle comment</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">/</span></td></tr>
+    <tr><td>Quick Fix / suggestion</td><td><span class="key mac-key">⌘</span>+<span class="key mac-key">.</span></td></tr>
+    <tr><td>Format document</td><td><span class="key mac-key">⇧</span>+<span class="key mac-key">⌥</span>+<span class="key mac-key">F</span></td></tr>
+    <tr><td>Rename symbol</td><td><span class="key mac-key">F2</span></td></tr>
+  </table>
+</div>
+
+</div>
+
+<!-- ==================== macOS MODIFIER LEGEND ==================== -->
+<div class="grid">
+
+<div class="section">
+  <h2>macOS Modifier Key Legend</h2>
+  <table>
+    <tr><th>Symbol</th><th>Key name</th><th>On keyboard</th></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⌘</td><td>Command</td><td>cmd</td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⌥</td><td>Option</td><td>alt (on some keyboards)</td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⌃</td><td>Control</td><td>ctrl</td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⇧</td><td>Shift</td><td>shift</td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">↩</td><td>Return / Enter</td><td></td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⌫</td><td>Delete (backspace)</td><td></td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⎋</td><td>Escape</td><td>esc</td></tr>
+    <tr><td class="sym" style="font-size:1.1rem;">⇥</td><td>Tab</td><td>tab</td></tr>
+  </table>
+</div>
+
+<div class="section">
+  <h2>Unicode Hex Codes (for Linux input)</h2>
+  <p style="font-size: 0.85rem; color: var(--muted); margin-bottom: 0.5rem;">
+    <span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">U</span>, type hex code, press <span class="key">Enter</span>
+  </p>
+  <table>
+    <tr><th>Char</th><th>Hex</th><th>Char</th><th>Hex</th><th>Char</th><th>Hex</th></tr>
+    <tr><td class="sym">α</td><td><code>03B1</code></td><td class="sym">λ</td><td><code>03BB</code></td><td class="sym">σ</td><td><code>03C3</code></td></tr>
+    <tr><td class="sym">β</td><td><code>03B2</code></td><td class="sym">μ</td><td><code>03BC</code></td><td class="sym">τ</td><td><code>03C4</code></td></tr>
+    <tr><td class="sym">γ</td><td><code>03B3</code></td><td class="sym">ν</td><td><code>03BD</code></td><td class="sym">φ</td><td><code>03C6</code></td></tr>
+    <tr><td class="sym">δ</td><td><code>03B4</code></td><td class="sym">π</td><td><code>03C0</code></td><td class="sym">χ</td><td><code>03C7</code></td></tr>
+    <tr><td class="sym">ε</td><td><code>03B5</code></td><td class="sym">ρ</td><td><code>03C1</code></td><td class="sym">ψ</td><td><code>03C8</code></td></tr>
+    <tr><td class="sym">θ</td><td><code>03B8</code></td><td class="sym">ω</td><td><code>03C9</code></td><td class="sym">Δ</td><td><code>0394</code></td></tr>
+    <tr><td class="sym">η</td><td><code>03B7</code></td><td class="sym">κ</td><td><code>03BA</code></td><td class="sym">Ω</td><td><code>03A9</code></td></tr>
+    <tr><td class="sym">₀</td><td><code>2080</code></td><td class="sym">²</td><td><code>00B2</code></td><td class="sym">∞</td><td><code>221E</code></td></tr>
+  </table>
+
+  <div class="note">
+    <strong>Python caveat:</strong> <code>λ</code> works as a variable name, but <strong>not</strong> as a keyword —
+    Python's <code>lambda</code> keyword is always ASCII. So <code>λ = 800e-9</code> is fine,
+    but anonymous functions still use <code>lambda x: x**2</code>.
+  </div>
+</div>
+
+</div>
+
+<p class="copy-hint" style="text-align: center; margin-top: 1rem; padding-bottom: 1rem;">
+  💡 <strong>Fastest workflow:</strong> keep this page open in a browser tab and copy-paste symbols as needed.
+  After a week, your fingers will remember the ones you use most.
+</p>
+
+</body>
+</html>
