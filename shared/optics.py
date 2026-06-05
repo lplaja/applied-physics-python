@@ -93,6 +93,5 @@ def peak_irradiance(E_J, tau_s, w0_m):
         Peak irradiance [W/m²]
     """
     import math
-    # BUG: can you spot it before running the debugger?
     I_peak = 2 * E_J / (math.pi * w0_m**2 * tau_s)
     return I_peak
