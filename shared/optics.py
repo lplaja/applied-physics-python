@@ -45,7 +45,7 @@ def gaussian_beam_waist(z, w0, wavelength):
         Beam radius w(z) [m].
     """
     z_R = rayleigh_range(w0, wavelength)
-    return w0 * math.sqrt(1 + (z / z_R)**2) # con error!!!
+    return w0 * math.sqrt(1 + (z / z_R)**2)**0.5
 
 
 def fresnel_reflectance(n1, n2, theta_i_deg):
